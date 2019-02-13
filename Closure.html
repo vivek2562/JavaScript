@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Closures</title>
+</head>
+<body>
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <div class="medium-6 small-12 cell">
+			<h5>Closure</h5>
+			
+			<input type="button" value="Click Me" onclick="alert(incrementCounter());"/>
+			
+        </div>
+    </div>
+</div>
+
+<script>
+var incrementCounter = (function(){
+	var count= 0;
+	
+	return function(){
+		return ++count;
+	}
+	
+})();
+
+
+function sayAlice(fname) {
+    var say = function(lname) {
+		var alice = fname + ' ' + lname;
+		console.log(alice); 
+	
+	}
+    return say;
+}
+sayAlice('vivek')('verma');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Closures</title>
+</head>
+<body>
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <div class="medium-6 small-12 cell">
+			<h5>Timer</h5>
+			<br/><br/>
+			<input type="text" value="10" id="txtBox"/>
+			<input type="button" class="button primary" value="Start Timer" onclick="startTimer('txtBox')"/>
+			<input type="button" class="button secondary" value="Stop Timer" onclick="stopTimer()"/>
+			
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var intervalId;
+function startTimer(controlId){
+	var control = document.getElementById(controlId);
+	var seconds = control.value;
+	seconds = seconds -1;
+	if(seconds == 0){
+		control.value="Done";
+		return;
+	}else{
+		control.value= seconds;
+	}
+	intervalId = setTimeout(function(){
+		startTimer('txtBox');
+	}, 1000);
+}
+
+function stopTimer(){
+	clearTimeout(intervalId);
+}
+
+</script>
+</body>
+</html>
